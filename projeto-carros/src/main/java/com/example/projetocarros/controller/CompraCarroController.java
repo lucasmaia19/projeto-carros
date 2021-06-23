@@ -1,6 +1,10 @@
 package com.example.projetocarros.controller;
 
-import java.util.ArrayList;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,10 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.projetocarros.entity.Carros;
 import com.example.projetocarros.entity.CompraCarro;
 import com.example.projetocarros.repository.CompraCarroRepository;
 
@@ -32,9 +34,10 @@ public class CompraCarroController {
 //	public CompraCarro cadastrar(@ModelAttribute CompraCarro compraCarro, @RequestPart(required = false) String carros) {
 //	public CompraCarro cadastrar(@RequestBody CompraCarro compraCarro) {
 	public CompraCarro cadastrar(@ModelAttribute CompraCarro compraCarro) {
-		
+			
 //		List<Carros> carrosList = new ArrayList<>();
 
+		
 		return repository.save(compraCarro);
 
 	}
@@ -54,7 +57,8 @@ public class CompraCarroController {
 	@DeleteMapping ("/{id}") 
 	public String deletar (@PathVariable Long id) {
 		repository.deleteById(id);
-		return "A compra do Id: " + id + " Foi deletado com sucesso";
+//		return "A compra do Id: " + id + " Foi deletado com sucesso";
+		return null;
 	
 	}
 	

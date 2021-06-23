@@ -1,14 +1,14 @@
 <div class="card">
 
     <div class="p-col-12 p-md-12">
-      <!-- <p-fieldset legend="Cadastro de Atividades"> -->
+      <p-fieldset legend="Cadastro da Compra do Carro">
 
             <div class="p-field p-col-6 p-md-12" [hidden]="!requestProgress">
                 <p-progressBar mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
             </div>
 
             <div class="p-fluid">
-                <form #form (ngSubmit)="uploadComDados()">
+                <form #form (ngSubmit)="salvar(null)">
 
                     <div class="p-col-12 p-md-6">
                         <div class="p-col-12 p-md-6">
@@ -16,7 +16,7 @@
                         </div>
                         <input type="text" pInputText #nome name="nome" [(ngModel)]="compraCarro.nome">
                     </div>
-                    
+
                     <div class="p-col-12 p-md-6">
                         <div class="p-col-12 p-md-6">
                             <label>Data</label>
@@ -31,8 +31,13 @@
                         </div>
                             <p-multiSelect [options]="carrosList" optionLabel="name" [resetFilterOnHide]="true"
                                 defaultLabel="Selecione" display="chip"
-                                name="carros" #carros [(ngModel)]="compraCarro.carros">
+                                name="carros" #carros [(ngModel)]="carrosDy.carros">
                             </p-multiSelect>
+
+                            <!-- <p-multiSelect [options]="carrosList" optionLabel="name" [resetFilterOnHide]="true"
+                                defaultLabel="Selecione" display="chip"
+                                name="carros" #carros [(ngModel)]="compraCarro.carros">
+                            </p-multiSelect> -->
                     </div>
 
                     <div class="p-field p-col-6 p-md-3">
@@ -42,12 +47,12 @@
                       </div>
 
                     <div class="p-col-12 p-md-6">
-                        <button pButton type="button" label="Salvar" icon="pi pi-check" (click)="uploadComDados()" [disabled]="requestProgress"></button>
+                        <button pButton type="submit" label="Salvar" icon="pi pi-check" [disabled]="requestProgress"></button>
                     </div>
                 </form>
             </div>
-        <!-- </p-fieldset> -->
-</div>
+        </p-fieldset>
+    </div>
 
     <div class="p-col-12 p-md-6">
         <button pButton type="button" label="Voltar" icon="pi pi-check" routerLink="" [disabled]="requestProgress"></button>

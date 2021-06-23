@@ -1,10 +1,8 @@
-import { CabecalhoComponent } from './cabecalho/cabecalho-cadastrar/cabecalho.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { AppComponent } from './app.component';
-import { AtividadePesquisaComponent } from './atividade/atividade-pesquisa/atividade-pesquisa.component';
+import { AtividadePesquisaComponent } from './compra-carro/compra-carro-pesquisa/compra-carro-pesquisa.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { AtividadeCadastroComponent } from './atividade/atividade-cadastro/atividade-cadastro.component';
-import { GerenciarCabecalhoComponent } from './cabecalho/cabecalho-gerenciar/gerenciar-cabecalho.component';
+import { AtividadeCadastroComponent } from './compra-carro/compra-carro-cadastro/compra-carro.component';
 
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -41,17 +39,12 @@ import { MenuComponent } from './menu/menu.component';
 import { TesteComponent } from './teste/teste.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 
-
 const routes: Routes = [
     { path: '', component: AtividadePesquisaComponent },
 
-    { path: 'atividade', component: AtividadeCadastroComponent },
+    { path: 'lancamento-compra', component: AtividadeCadastroComponent },
 
-    { path: 'cabecalho', component: CabecalhoComponent },
-
-    { path: 'ativade/:id', component: AtividadeCadastroComponent },
-
-    { path: 'gerenciar-cabecalho', component: GerenciarCabecalhoComponent },
+    { path: 'carro/:id', component: AtividadeCadastroComponent },
 
     { path: 'teste', component: TesteComponent }
 
@@ -62,9 +55,7 @@ const routes: Routes = [
     AppComponent,
     AtividadeCadastroComponent,
     AtividadePesquisaComponent,
-    CabecalhoComponent,
     NavbarComponent,
-    GerenciarCabecalhoComponent,
     MenuComponent,
     TesteComponent,
   ],

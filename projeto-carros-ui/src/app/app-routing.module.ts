@@ -1,4 +1,4 @@
-import { AtividadeCadastroComponent } from './atividade/atividade-cadastro/atividade-cadastro.component';
+import { AtividadeCadastroComponent } from './compra-carro/compra-carro-cadastro/compra-carro.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

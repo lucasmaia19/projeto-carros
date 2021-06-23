@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { CadastroService } from './../atividade/cadastro-.service';
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/api';
+import { CadastroService } from '../compra-carro/compra-carro-.service';
 
 export class Multselect {
     id?: string;
@@ -45,6 +45,7 @@ export class TesteComponent implements OnInit {
         formData.append('opcoes', dados);
         // formData.append('file', dados);
         console.log("antes da req dadosCities", dados)
+        console.log("formData", formData)
 
         this.http.post(this.apiuploadComDadosUrl, formData)
         .toPromise()
