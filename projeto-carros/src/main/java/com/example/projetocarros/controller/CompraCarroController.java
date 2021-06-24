@@ -1,10 +1,12 @@
 package com.example.projetocarros.controller;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,12 +33,17 @@ public class CompraCarroController {
 	private CompraCarroRepository repository;
 	
 	@PostMapping
-//	public CompraCarro cadastrar(@ModelAttribute CompraCarro compraCarro, @RequestPart(required = false) String carros) {
-//	public CompraCarro cadastrar(@RequestBody CompraCarro compraCarro) {
 	public CompraCarro cadastrar(@ModelAttribute CompraCarro compraCarro) {
-			
-//		List<Carros> carrosList = new ArrayList<>();
-
+		
+		// pega a data de hoje e formata
+		Date data = new Date(System.currentTimeMillis());
+		SimpleDateFormat formatarDate = new SimpleDateFormat("dd-MM-yyyy");
+		
+		LocalDate dataAtual;
+//		dataAtual = (formatarDate.format(data));
+//		System.out.print(dataAtual);
+		
+		compraCarro.getData().toString();
 		
 		return repository.save(compraCarro);
 
@@ -57,13 +64,12 @@ public class CompraCarroController {
 	@DeleteMapping ("/{id}") 
 	public String deletar (@PathVariable Long id) {
 		repository.deleteById(id);
-//		return "A compra do Id: " + id + " Foi deletado com sucesso";
 		return null;
 	
 	}
 	
 	@PutMapping("/{id}")
-	public CompraCarro atualizar(@RequestBody CompraCarro compraCarro, @PathVariable Long id) {
+	public CompraCarro atualizar(@ModelAttribute CompraCarro compraCarro, @PathVariable Long id) {
 		
 		CompraCarro compraCarroSaved = repository.findById(id).get();
 

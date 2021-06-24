@@ -39,17 +39,19 @@ export class CadastroService {
         .then(response => {
           return response;
         });
-    
+
       }
 
-      atualizar(compraCarro: CompraCarro): Promise<any> {
+      // atualizar(compraCarro: FormData): Promise<any> {
+        atualizar(compraCarro: FormData)  {
         console.log("id service", compraCarro)
-       return this.http.put(this.urlBase + `compra-carro/${compraCarro.id}`, compraCarro)
-        .toPromise()
-        .then(response => {
-    
+      //  return this.http.put(this.urlBase + `compra-carro/${compraCarro.id}`, compraCarro)
+        // .toPromise()
+        // .then(response => {
+          // console.log("response", response)
+          let response
           return response;
-        });
+        // });
       }
 
 }

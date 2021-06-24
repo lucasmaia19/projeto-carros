@@ -20,7 +20,7 @@ export class CompraCarro {
     id?: number;
     nome?: string;
     data?: Date;
-    // carros?: Carros[];
+    carros?: Carros[];
     valor?: Number;
 }
 
@@ -104,7 +104,36 @@ export class AtividadeCadastroComponent implements OnInit {
       }
 
       atualizar(form: FormControl) {
-        this.cadastroService.atualizar(this.compraCarro)
+        const idCarro = this.route.snapshot.params['id'];
+
+        const formData = new FormData();
+        
+        this.compraCarro.carros = null
+
+        let idList = '';
+        for (let item of this.carrosDy.carros) {
+            console.log("item.code", item.code);
+            idList += item.code;
+        }
+
+        formData.append('carros', idList);
+
+        const dados = this.compraCarro;
+
+        Object.keys(dados).forEach(k => {
+            if(dados[k] === undefined || dados[k] === null) {
+                return;
+            } else if (dados[k] instanceof Date) {
+                let data1 = moment(this.compraCarro.data)
+                let data2 = data1.format("DD/MM/YYYY")
+                formData.append('data', data2)
+            } else {
+                formData.append(k, dados[k]);
+            }
+        });
+
+        this.http.put(`http://localhost:8080/compra-carro/${idCarro}`, formData)
+          .toPromise()
           .then(response => {
             this.messageService.add({severity:'success', summary:'Cadastro Atualizado com Sucesso!'});
             this.router.navigate(['']);
