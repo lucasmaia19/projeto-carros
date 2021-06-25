@@ -171,7 +171,7 @@ export class AtividadeCadastroComponent implements OnInit {
                 return;
             } else if (dados[k] instanceof Date) {
                 let data1 = moment(this.compraCarro.data)
-                let data2 = data1.format("DD/MM/YYYY")
+                let data2 = data1.format("YYYY/MM/DD")
                 formData.append('data', data2)
             } else {
                 formData.append(k, dados[k]);
@@ -183,14 +183,11 @@ export class AtividadeCadastroComponent implements OnInit {
         this.http.post(this.apiUploadUrl, formData)
         .toPromise()
         .then(response => {
-
             this.messageService.add({severity:'success', summary:'Cadastro adicionado com sucesso!'});
-
             location.reload()
-
             })
-            .catch(erro => this.messageService.add({severity:'error', summary:'ERRO AO CADASTRAR'}))
-                .finally(() => this.requestProgress = false);
+            // .catch(erro => this.messageService.add({severity:'error', summary:'ERRO AO CADASTRAR'}))
+            .catch(erro => console.log(erro.message))
+            .finally(() => this.requestProgress = false);
        }
-
 }

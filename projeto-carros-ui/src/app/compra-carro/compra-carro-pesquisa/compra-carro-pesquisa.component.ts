@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { CadastroService } from '../compra-carro-.service';
+import * as moment from 'moment';
 
 export class Carros {
     nome?: string;
@@ -61,8 +62,17 @@ export class AtividadePesquisaComponent implements OnInit {
         this.messageService.add({severity: 'info', summary: 'Carregando carros...'});
         this.cadastroService.listaCarros()
         .then(response => {
+
             this.carros = response;
-            console.log("this.carros", this.carros);
+
+            this.carros.forEach(function(carros) {
+                let data = moment(carros.data, "YYYY/MM/DD");
+                carros.data = data.format("DD/MM/YYYY");
+            })
+            
+            // console.log("response", response)
+
+            // console.log("this.carros", this.carros);
             // this.router.navigate([''])
         })
         .catch(erro => this.messageService.add({severity:'error', summary:'ERRO AO CARREGAR carros'}))

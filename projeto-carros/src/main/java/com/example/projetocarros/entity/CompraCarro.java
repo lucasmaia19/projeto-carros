@@ -2,6 +2,7 @@ package com.example.projetocarros.entity;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -24,7 +25,9 @@ public class CompraCarro {
 	
 	private String nome;
 	
-	private LocalDate data;
+//	private LocalDate data;
+	
+	private Date data;
 	
 //	@OneToMany
 //	private List<Carros> carros = new ArrayList<>();
